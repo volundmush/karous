@@ -1,0 +1,124 @@
+Karous
+WoD 20th Annversary Edition Sheet system
+Revision 0.1
+
+Character should be stored in a CouchDB database.  Each character sheet stored
+as a document in that database:
+
+Concept sketch:
+
+{
+	"objid": "#12345:1614982300",
+	"template": [
+		"Mage",
+		"Technocracy",
+	],
+	"faction": [
+		"Mage",
+		"Technocracy",
+		"Void Engineers",
+		"Neutralization Specialist Corps"
+	],
+	"sheet": {
+		"Basics": {
+			"Name": "Rico Hernandez Vasquez",
+			"Concept: "USMC Ghostbuster",
+			"Nature": "Crusader",
+			"Demeanor": "Traditionalist"
+		}
+		"Attributes": {
+			"Physical": {
+				"Dexterity": 3,
+				"Stamina": 3,
+				"Strength": 2,
+			},
+			"Social": {
+				"Appearance": "2",
+				"Charisma": "2",
+				"Manipulation": "2",
+			},
+			"Mental": {
+				"Intelligence": "4",
+				"Perception": "3",
+				"Wits": "3",
+			},
+		},
+		"Abilities": {
+			"Talent": {
+				"Alertness": 2,
+			},
+			"Skill": {
+				"Firearms": "2",
+			},
+			"Knowledge": {
+				"Science": "2",
+			},
+		},
+		"Secondary Abilities": {
+			"Skill": {
+				"Energy Weapons": "2",
+			},
+			"Knowledge": {
+				"Subdimensions": "2",
+			},
+		},
+		"Powers": {
+			"Spheres": {
+				"Dimensional Science": "2",
+			},
+		},
+		"Advantages": {
+			"Merits": {
+			},
+			"Flaws": {
+			},
+			"Backgrounds": {
+			},
+			"Arete": 3,
+			"Essence": "Pattern",
+		},
+		"Pools": {
+			"Quintessence": [0, 3],
+		},
+		Health: {
+			"Bashing": 0,
+		},
+	},
+	"approved": "1614982969",
+}
+
+Additional data that will be stored in the database are templates.  Templates
+are basically the 'default' stats that are shown on a sheet of that type, even
+when they're zeroes.  It's literally just a blank slate shown on the sheet,
+prompting the player with options in Character Generation and beyond.
+
+Clearly the intent of this data structure is to do some fancy-pants map-reduce
+when we query into it.
+
+A script, probably written with Javascript (Node) but I'm open to Python, will
+be called into by RhostMUSH execscript to implement all sheet interactions:
+
++sheet
++sheet me
++sheet <name>
+	Show my/someone else's character sheet
+
++sheet/<section>
++sheet/<section> me
++sheet/<section> <name>
+	Show my/someone else's character sheet, but just one section
+
++sheet/show here
++sheet/show name
+	Show someone else my sheet/the room I'm in
+
++sheet/show/<section> here
++sheet/show/<section> name
+	Show someone else my sheet/the room I'm in, but just one section
+
++sheet/prove stat/value=name
++sheet/prove stat/value=here
+	Prove to someone that I have a stat of at least that value
+
++roll
+	This is going to have all the usual things. I'll spec it later as needed
