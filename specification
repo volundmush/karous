@@ -10,8 +10,10 @@ Concept sketch:
 {
 	"objid": "#12345:1614982300",
 	"template": [
+		"Base",
 		"Mage",
 		"Technocracy",
+		"Void Engineers"
 	],
 	"faction": [
 		"Mage",
@@ -20,69 +22,29 @@ Concept sketch:
 		"Neutralization Specialist Corps"
 	],
 	"sheet": {
-		"Basics": {
-			"Name": "Rico Hernandez Vasquez",
-			"Concept: "USMC Ghostbuster",
-			"Nature": "Crusader",
-			"Demeanor": "Traditionalist"
-		}
-		"Attributes": {
-			"Physical": {
-				"Dexterity": 3,
-				"Stamina": 3,
-				"Strength": 2,
-			},
-			"Social": {
-				"Appearance": "2",
-				"Charisma": "2",
-				"Manipulation": "2",
-			},
-			"Mental": {
-				"Intelligence": "4",
-				"Perception": "3",
-				"Wits": "3",
-			},
-		},
-		"Abilities": {
-			"Talent": {
-				"Alertness": 2,
-			},
-			"Skill": {
-				"Firearms": "2",
-			},
-			"Knowledge": {
-				"Science": "2",
-			},
-		},
-		"Secondary Abilities": {
-			"Skill": {
-				"Energy Weapons": "2",
-			},
-			"Knowledge": {
-				"Subdimensions": "2",
-			},
-		},
-		"Powers": {
-			"Spheres": {
-				"Dimensional Science": "2",
-			},
-		},
-		"Advantages": {
-			"Merits": {
-			},
-			"Flaws": {
-			},
-			"Backgrounds": {
-			},
-			"Arete": 3,
-			"Essence": "Pattern",
-		},
-		"Pools": {
-			"Quintessence": [0, 3],
-		},
-		Health: {
-			"Bashing": 0,
-		},
+		"Name": "Rico Hernandez Vasquez",
+		"Concept: "USMC Ghostbuster",
+		"Nature": "Crusader",
+		"Demeanor": "Traditionalist"
+		"Dexterity": 3,
+		"Stamina": 3,
+		"Strength": 2,
+		"Appearance": 2,
+		"Charisma": 2,
+		"Manipulation": 2,
+		"Intelligence": 4,
+		"Perception": 3,
+		"Wits": 3,
+		"Alertness": 2,
+		"Firearms": 2,
+		"Science": 2,
+		"Energy Weapons": 2,
+		"Subdimensions": 2,
+		"Dimensional Science": 2,
+		"Arete": 3,
+		"Essence": "Pattern",
+		"Quintessence": [0, 3],
+		"Bashing": 0,
 	},
 	"approved": "1614982969",
 }
@@ -92,8 +54,176 @@ are basically the 'default' stats that are shown on a sheet of that type, even
 when they're zeroes.  It's literally just a blank slate shown on the sheet,
 prompting the player with options in Character Generation and beyond.
 
+Sample templates:
+
+{
+	"Template Name": "Base",
+	"Basics": {
+		"Name": "string",
+		"Concept: "string",
+		"Nature": "string",
+		"Demeanor": "string"
+	}
+	"Attributes": {
+		"Physical": {
+			"Dexterity": "integer",
+			"Stamina": "integer",
+			"Strength": "integer",
+		},
+		"Social": {
+			"Appearance": "integer",
+			"Charisma": "integer",
+			"Manipulation": "integer",
+		},
+		"Mental": {
+			"Intelligence": "integer",
+			"Perception": "integer",
+			"Wits": "integer",
+		},
+	},
+	"Abilities": {
+		"Talent": {
+		},
+		"Skill": {
+		},
+		"Knowledge": {
+		},
+	},
+	"Secondary Abilities": {
+		"Talent": {
+		},
+		"Skill": {
+		},
+		"Knowledge": {
+		},
+	},
+	"Powers": {
+	},
+	"Advantages": {
+		"Merits": {
+		},
+		"Flaws": {
+		},
+		"Backgrounds": {
+		},
+	},
+	"Pools": {
+	},
+	"Health": {
+		"Bashing": "integer",
+		"Lethal": "integer",
+		"Aggravated": "integer",
+	}
+}
+
+{
+	"Template Name": "Mage",
+	"Abilities": {
+		"Talent": {
+			"Alertness": "integer",
+			"Awareness": "integer",
+		},
+		"Skill": {
+			"Firearms": "integer",
+			"Stealth": "integer",
+		},
+		"Knowledge": {
+			"Academics": "integer",
+			"Science": "integer",
+		},
+	},
+	"Secondary Abilities": {
+		"Talent": {
+			"Cooking": "integer",
+		},
+		"Skill": {
+			"Archery": "integer",
+		},
+		"Knowledge": {
+			"Military Science": "integer",
+		},
+	},
+	"Powers": {
+		"Spheres": {
+			"Correspondence": "integer",
+			"Entropy": "integer",
+			"Forces": "integer",
+			"Life": "integer",
+			"Matter": "integer",
+			"Mind": "integer",
+			"Prime": "integer",
+			"Spirit": "integer",
+			"Time": "integer",
+		},
+	},
+	"Advantages": {
+		"Merits": {
+		},
+		"Flaws": {
+		},
+		"Backgrounds": {
+			"Resources": "integer",
+			"Sanctum": "integer",
+		},
+		"Arete": "integer",
+		"Essence": "string",
+	},
+	"Pools": {
+		"Quintessence": "pool",
+	},
+}
+
+{
+	"Template Name": "Technoracy",
+	"Secondary Abilities": {
+		"Skill": {
+			"Energy Weapons": "integer",
+		},
+		"Knowledge": {
+			"RD Data": "integer",
+		},
+	},
+	"Advantages": {
+		"Merits": {
+		},
+		"Flaws": {
+		},
+		"Backgrounds": {
+			"Sanctum": "delete",
+			"Laboratory": "integer",
+		},
+		"Arete": "delete",
+		"Enlightenment": "integer",
+	},
+	"Pools": {
+		"Quintessence": "delete",
+		"Primal Energy": "pool",
+	},
+}
+
+{
+	"Template Name": "Void Engineers",
+	"Powers": {
+		"Spheres": {
+			"Spirit": "delete",
+			"Dimensional Science": "integer",
+		},
+	},
+}
+
+
 Clearly the intent of this data structure is to do some fancy-pants map-reduce
 when we query into it.
+
+Templates are all about interface and structure. They are used to determine
+both what options to present to players, and how to present them.
+
+Note that the above sketch just shows each template entry having just a single
+string value. It should actually be a dict each, so that it can specify type,
+as well as the *display name*, because we want to segregate display name from
+internal name, as display names may repeat in different templates.
+
+--
 
 A script, probably written with Javascript (Node) but I'm open to Python, will
 be called into by RhostMUSH execscript to implement all sheet interactions:
@@ -122,3 +252,10 @@ be called into by RhostMUSH execscript to implement all sheet interactions:
 
 +roll
 	This is going to have all the usual things. I'll spec it later as needed
+	But it should support:
+	- Rolling a sum of stats and hard-coded penalties and bonuses to diffs
+	- Rolling to the room or to individual players
+	- Rolling to a job
+	- Emitting all rolls to a staff channel
+	- "Test" rolling that doesn't log to a staff channel
+	- Support a "with speciality" toggle
