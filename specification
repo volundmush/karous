@@ -1,6 +1,6 @@
 Karous
 WoD 20th Annversary Edition Sheet system
-Revision 0.1
+Revision 0.2
 
 Character should be stored in a CouchDB database.  Each character sheet stored
 as a document in that database:
