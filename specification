@@ -1,6 +1,6 @@
 Karous
 WoD 20th Annversary Edition Sheet system
-Revision 0.2
+Revision 0.3
 
 Character should be stored in a CouchDB database.  Each character sheet stored
 as a document in that database:
@@ -59,26 +59,26 @@ Sample templates:
 {
 	"Template Name": "Base",
 	"Basics": {
-		"Name": "string",
-		"Concept: "string",
-		"Nature": "string",
-		"Demeanor": "string"
+		"Name": { "id": "Name", "type": "string" },
+		"Concept: { "id": "Concept", "type": "string" },
+		"Nature": { "id": "Nature", "type": "string" },
+		"Demeanor": { "id": "Demeanor", "type": "string" }
 	}
 	"Attributes": {
 		"Physical": {
-			"Dexterity": "integer",
-			"Stamina": "integer",
-			"Strength": "integer",
+			"Dexterity": { "id": "Dexterity", "type": "integer" },
+			"Stamina": { "id": "Stamina", "type": "integer" },
+			"Strength": { "id": "Strength", "type": "integer" },
 		},
 		"Social": {
-			"Appearance": "integer",
-			"Charisma": "integer",
-			"Manipulation": "integer",
+			"Appearance": { "id": "Appearance", "type": "integer" },
+			"Charisma": { "id": "Charisma", "type": "integer" },
+			"Manipulation": { "id": "Manipulation", "type": "integer" },
 		},
 		"Mental": {
-			"Intelligence": "integer",
-			"Perception": "integer",
-			"Wits": "integer",
+			"Intelligence": { "id": "Intelligence", "type": "integer" },
+			"Perception": { "id": "Perception", "type": "integer" },
+			"Wits": { "id": "Wits", "type": "integer" },
 		},
 	},
 	"Abilities": {
@@ -110,9 +110,9 @@ Sample templates:
 	"Pools": {
 	},
 	"Health": {
-		"Bashing": "integer",
-		"Lethal": "integer",
-		"Aggravated": "integer",
+		"Bashing": { "id": "Bashing", "type": "integer" },
+		"Lethal": { "id": "Lethal", "type": "integer" },
+		"Aggravated": { "id": "Aggravated", "type": "integer" },
 	}
 }
 
@@ -120,40 +120,41 @@ Sample templates:
 	"Template Name": "Mage",
 	"Abilities": {
 		"Talent": {
-			"Alertness": "integer",
-			"Awareness": "integer",
+			"Alertness": { "id": "Alertness", "type": "integer" },
+			"Awareness": { "id": "Awareness", "type": "integer" },
 		},
 		"Skill": {
-			"Firearms": "integer",
-			"Stealth": "integer",
+			"Firearms": { "id": "Firearms", "type": "integer" },
+			"Stealth": { "id": "Stealth", "type": "integer" },
 		},
 		"Knowledge": {
-			"Academics": "integer",
-			"Science": "integer",
+			"Academics": { "id": "Academics", "type": "integer" },
+			"Science": { "id": "Science", "type": "integer" },
 		},
 	},
 	"Secondary Abilities": {
 		"Talent": {
-			"Cooking": "integer",
+			"Cooking": { "id": "Cooking", "type": "integer" },
 		},
 		"Skill": {
-			"Archery": "integer",
+			"Archery": { "id": "Archery", "type": "integer" },
+			"Energy Weapons": { "id": "Energy Weapons", "type": "integer" },
 		},
 		"Knowledge": {
-			"Military Science": "integer",
+			"Military Science": { "id": "Military Science", "type": "integer" },
 		},
 	},
 	"Powers": {
 		"Spheres": {
-			"Correspondence": "integer",
-			"Entropy": "integer",
-			"Forces": "integer",
-			"Life": "integer",
-			"Matter": "integer",
-			"Mind": "integer",
-			"Prime": "integer",
-			"Spirit": "integer",
-			"Time": "integer",
+			"Correspondence": { "id": "Correspondence", "type": "integer" },
+			"Entropy": { "id": "Entropy", "type": "integer" },
+			"Forces": { "id": "Forces", "type": "integer" },
+			"Life": { "id": "Life", "type": "integer" },
+			"Matter": { "id": "Matter", "type": "integer" },
+			"Mind": { "id": "Mind", "type": "integer" },
+			"Prime": { "id": "Prime", "type": "integer" },
+			"Spirit": { "id": "Spirit", "type": "integer" },
+			"Time": { "id": "Time", "type": "integer" },
 		},
 	},
 	"Advantages": {
@@ -162,25 +163,22 @@ Sample templates:
 		"Flaws": {
 		},
 		"Backgrounds": {
-			"Resources": "integer",
-			"Sanctum": "integer",
+			"Resources": { "id": "Resources", "type": "integer" },
+			"Sanctum": { "id": "Sanctum", "type": "integer" },
 		},
-		"Arete": "integer",
-		"Essence": "string",
+		"Arete": { "id": "Arete", "type": "integer" },
+		"Essence": { "id": "Essence", "type": "string" },
 	},
 	"Pools": {
-		"Quintessence": "pool",
+		"Quintessence": { "id": "Quintessence", "type": "pool" },
 	},
 }
 
 {
 	"Template Name": "Technoracy",
 	"Secondary Abilities": {
-		"Skill": {
-			"Energy Weapons": "integer",
-		},
 		"Knowledge": {
-			"RD Data": "integer",
+			"RD Data": { "id": "RD Data", "type": "integer" },
 		},
 	},
 	"Advantages": {
@@ -189,15 +187,15 @@ Sample templates:
 		"Flaws": {
 		},
 		"Backgrounds": {
-			"Sanctum": "delete",
-			"Laboratory": "integer",
+			"Sanctum": { "type": "delete" },
+			"Laboratory": { "id": "Sanctum", "alias": "Sanctum", "type": "integer" },
 		},
-		"Arete": "delete",
-		"Enlightenment": "integer",
+		"Arete": { "type": "delete" },
+		"Enlightenment": { "id": "Arete", "alias": "Arete", "type": "integer" },
 	},
 	"Pools": {
-		"Quintessence": "delete",
-		"Primal Energy": "pool",
+		"Quintessence": { "type": "delete" },
+		"Primal Energy": { "id": "Quintessence", "alias": "Quintessence", "type": "pool" },
 	},
 }
 
@@ -205,8 +203,8 @@ Sample templates:
 	"Template Name": "Void Engineers",
 	"Powers": {
 		"Spheres": {
-			"Spirit": "delete",
-			"Dimensional Science": "integer",
+			"Spirit": { "type": "delete" },
+			"Dimensional Science": { "id": "Dimensional Science", "type": "integer" },
 		},
 	},
 }
