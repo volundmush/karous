@@ -156,9 +156,7 @@ Sample templates:
 		},
 	},
 	"Advantages": {
-		"Merits": {
-		},
-		"Flaws": {
+		"Merits and Flaws": {
 		},
 		"Backgrounds": {
 			"Resources": { "id": "Resources", "type": "integer" },
@@ -180,9 +178,7 @@ Sample templates:
 		},
 	},
 	"Advantages": {
-		"Merits": {
-		},
-		"Flaws": {
+		"Merits and Flaws": {
 		},
 		"Backgrounds": {
 			"Sanctum": { "type": "delete" },
