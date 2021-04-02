@@ -1,6 +1,6 @@
 Karous
 WoD 20th Annversary Edition Sheet system
-Revision 0.3
+Revision 0.31
 
 Character should be stored in a CouchDB database.  Each character sheet stored
 as a document in that database:
@@ -100,9 +100,7 @@ Sample templates:
 	"Powers": {
 	},
 	"Advantages": {
-		"Merits": {
-		},
-		"Flaws": {
+		"Merits and Flaws": {
 		},
 		"Backgrounds": {
 		},
