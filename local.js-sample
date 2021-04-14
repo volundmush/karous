@@ -1,0 +1,4 @@
+module = {
+	dbHost: "http://localhost:5984",
+	dbOpts: {basicAuth: {username: "karous", password: "karous"}}
+}
