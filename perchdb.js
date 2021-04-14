@@ -4,12 +4,13 @@ export function client(opts) {
 		opts: function() {
 			return opts
 		},
-		rest: function(path, method = "GET", data = null) {
+		rest: function(pathname, method = "GET", data = null) {
 			if(typeof data == "object") {
 				data = JSON.stringify(data)
 			}
 			var url = this.optsURL()
-			url.path = path
+			url.pathname = pathname
+			console.log(url.toString())
 			return fetch(url.toString(), {
 				method: method,
 				body: data,
