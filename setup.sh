@@ -16,7 +16,7 @@ curl()
 debug "Pulling latest CouchDB image"
 docker image pull couchdb:latest
 debug "Running CouchDB container $DOCKER"
-docker run -d -p 5984:5984 --name "$DOCKER" -e COUCHDB_USER="$USERNAME" -e COUCHDB_PASSWORD="$PASSWORD" couchdb:latest
+docker run -d -p 127.0.0.1:5984:5984 --name "$DOCKER" -e COUCHDB_USER="$USERNAME" -e COUCHDB_PASSWORD="$PASSWORD" couchdb:latest
 debug "Waiting for CouchDB to start"
 while ! docker exec -it "$DOCKER" curl -u "$USERNAME:$PASSWORD" "http://127.0.0.1:5984/_config/vendor/version";
 	do sleep 1
