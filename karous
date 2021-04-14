@@ -1,0 +1,33 @@
+#! /usr/bin/env -S ./deno run --allow-net --allow-read
+
+const PerchDB = await import("./perchdb.js")
+
+async function getLocalJs() {
+	try {
+		var gotLocalJs = await import("./local.js")
+		return gotLocalJs
+	} catch(e) {
+		var defaultLocalJs = {
+			database: {
+				protocol: "http",
+				hostname: "localhost",
+				port: 5984,
+				username: "karous",
+				password: "karous"
+			}
+		}
+		return defaultLocalJs
+	}
+}
+
+const LocalJs = await getLocalJs()
+
+async function main() {
+	const perch = PerchDB.client(LocalJs.database)
+	var out = await perch.rest("/db", 'GET', {db: 'karous'})
+	console.log(out)
+}
+
+await main()
+
+// vim: syn=javascript

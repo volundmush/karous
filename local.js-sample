@@ -1,4 +1,9 @@
-module = {
-	dbHost: "http://localhost:5984",
-	dbOpts: {basicAuth: {username: "karous", password: "karous"}}
+export {
+	database: {
+		protocol: "http",
+		hostname: "localhost",
+		port: 5984,
+		username: "karous",
+		password: "karous"
+	}
 }
