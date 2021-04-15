@@ -10,7 +10,6 @@ export function client(opts) {
 			}
 			var url = this.optsURL()
 			url.pathname = pathname
-			console.log(url.toString())
 			return fetch(url.toString(), {
 				method: method,
 				body: data,
