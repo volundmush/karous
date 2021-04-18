@@ -18,26 +18,56 @@ export function client(opts) {
 			var url = this.optsURL()
 			url.pathname = pathname
 
-			return fetch(url.toString(), {
-				method: method,
-				body: data,
-				headers: headers
+			return new Promise(async (resolve, reject) => {
+				try {
+					var ret = await fetch(url.toString(), {
+						method: method,
+						body: data,
+						headers: headers
+					})
+					resolve(ret)
+				} catch(e) {
+					reject(e)
+					return
+				}
 			})
 		},
 
 		db: function(dbname) {
 			var client = this
-			var ret = {
-				status: function() {
-					return client.rest(`/${dbname}`, 'HEAD')
-				},
-
-				info: function() {
-					return client.rest(`/${dbname}`, 'GET')
-				},
+			const status = function() {
+				return client.rest(`/${dbname}`, 'HEAD')
 			}
-			ret.head = ret.status
-			ret.get = ret.info
+
+			const info = function() {
+				return client.rest(`/${dbname}`, 'GET')
+			}
+
+			const exists = function() {
+				return new Promise(async (resolve, reject) => {
+					try {
+						var st = await this.status()
+					} catch(e) {
+						reject(e)
+						return
+					}
+					resolve(st.status != 404)
+				})
+			}
+
+			const create = function() {
+				return client.rest(`/${dbname}`, 'PUT')
+			}
+
+			var ret = {
+				status: status,
+				head: status,
+				info: info,
+				get: info,
+				exists: exists,
+				create: create,
+				put: create
+			}
 			return ret
 		},
 

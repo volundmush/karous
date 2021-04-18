@@ -25,4 +25,6 @@ debug "Initializing CouchDB"
 curl "http://127.0.0.1:5984/_users"
 curl "http://127.0.0.1:5984/_replicator"
 curl "http://127.0.0.1:5984/_global_changes"
+debug "Initializing karous"
+./karous
 debug "Done!"

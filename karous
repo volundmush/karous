@@ -2,6 +2,9 @@
 
 const PerchDB = await import("./perchdb.js")
 
+const ansiYellow = "[1;38;5;184m"
+const ansiReset = "[0m"
+
 async function getLocalJs() {
 	try {
 		var gotLocalJs = await import("./local.js")
@@ -24,8 +27,20 @@ const LocalJs = await getLocalJs()
 
 async function main() {
 	const perch = PerchDB.client(LocalJs.database)
-	var out = await perch.rest("/db", 'GET', {db: 'karous'})
-	console.log(out)
+
+	async function checkDatabase(name) {
+		const db = perch.db(name)
+		if(await db.exists()) {
+		console.log(`${name} exists!`)
+			return db
+		}
+		console.log(`${name} does not exist! Creating.`)
+		await db.create()
+		return db
+	}
+
+	const sheetsDb = await checkDatabase('karous-sheets')
+	const templatesDb = await checkDatabase('karous-templates')
 }
 
 await main()
