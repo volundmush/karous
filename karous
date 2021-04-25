@@ -1,6 +1,7 @@
-#! /usr/bin/env -S ./deno run --allow-net --allow-read
+#! /usr/bin/env -S ./deno run --allow-net --allow-read --allow-env
 
 const PerchDB = await import("./perchdb.js")
+const Rhost = await import("./rhost.js")
 
 const ansiYellow = "[1;38;5;184m"
 const ansiReset = "[0m"
@@ -41,6 +42,9 @@ async function main() {
 
 	const sheetsDb = await checkDatabase('karous-sheets')
 	const templatesDb = await checkDatabase('karous-templates')
+
+	const execscript = Rhost.execscript()
+	console.log(execscript)
 }
 
 await main()
