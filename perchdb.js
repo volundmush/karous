@@ -20,11 +20,14 @@ export function client(opts) {
 
 			return new Promise(async (resolve, reject) => {
 				try {
-					var ret = await fetch(url.toString(), {
+					opts = {
 						method: method,
-						body: data,
 						headers: headers
-					})
+					}
+					if(method != "GET" && method != "HEAD") {
+						opts['body'] = data
+					}
+					var ret = await fetch(url.toString(), opts)
 					resolve(ret)
 				} catch(e) {
 					reject(e)
