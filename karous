@@ -1,4 +1,4 @@
-#! /usr/bin/env -S ./deno run --allow-net --allow-read --allow-env
+#! /usr/bin/env ./deno run --allow-net --allow-read --allow-env
 
 const PerchDB = await import("./perchdb.js")
 const Rhost = await import("./rhost.js")
