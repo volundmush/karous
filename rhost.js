@@ -18,25 +18,25 @@ export function execscript() {
 	var player = {
 		dbref: playerRef,
 		objid: objIds[0],
-		flags: playerFlags
+		flags: playerFlags,
 		toggles: playerToggles,
 		totems: playerTotems
 	}
 
 	var cause = {
-		dbref: causeRef
+		dbref: causeRef,
 		objid: objIds[1]
 	}
 
 	var caller = {
-		dbref: callerRef
+		dbref: callerRef,
 		objid: objIds[2]
 	}
 
 	var owner = {
 		dbref: ownerRef,
 		objid: objIds[3],
-		flags: ownerFlags
+		flags: ownerFlags,
 		toggles: ownerToggles,
 		totems: ownerTotems
 	}
