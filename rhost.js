@@ -1,6 +1,4 @@
 export function execscript() {
-	console.log(Deno.env)
-
 	var version = Deno.env.get('MUSH_VERSION')
 	var playerRef = Deno.env.get('MUSH_PLAYER')
 	var causeRef = Deno.env.get('MUSH_CAUSE')
@@ -44,7 +42,7 @@ export function execscript() {
 	var envObj = Deno.env.toObject()
 	var registers = {}
 	
-	envObj.keys().filter(key => /^MUSHN_/.match(key)).forEach(function(key) {
+	Object.keys(envObj).filter(key => key.match(/^MUSHN_/)).forEach(function(key) {
 		var name = key.replace("MUSHN_", "")
 		registers[name] = envObj[key]
 	})
