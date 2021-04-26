@@ -1,3 +1,3 @@
 #! /bin/sh
 cd scripts/karous
-./deno run --allow-net --allow-read --allow-env karous.js
+./deno run --allow-net --allow-read --allow-env karous.js "$*"
