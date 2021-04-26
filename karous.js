@@ -41,14 +41,14 @@ async function main() {
 	const sheetsDb = await checkDatabase('karous-sheets')
 	const templatesDb = await checkDatabase('karous-templates')
 
+	var execscript
 	try {
-		const es = Rhost.execscript()
+		execscript = Rhost.execscript()
 	} catch(e) {
 		console.log("Failed parsing Rhost execscript data")
 		console.log(e)
 		return
 	}
-	const execscript = es
 	console.log(execscript)
 }
 
