@@ -76,6 +76,9 @@ export function environment() {
 }
 
 export function print(str) {
+	if(typeof str != "string") {
+		str = Deno.inspect(str)
+	}
 	var rhostEncodedString = str.split("").map(function(c) {
 		var cp = c.codePointAt(0)
 		if(cp > 127) {

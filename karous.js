@@ -30,10 +30,10 @@ async function main() {
 	async function checkDatabase(name) {
 		const db = perch.db(name)
 		if(await db.exists()) {
-		print(`${name} exists!`)
+		Rhost.print(`${name} exists!`)
 			return db
 		}
-		print(`${name} does not exist! Creating.`)
+		Rhost.print(`${name} does not exist! Creating.`)
 		await db.create()
 		return db
 	}
@@ -45,13 +45,13 @@ async function main() {
 	try {
 		environment = Rhost.environment()
 	} catch(e) {
-		print("Failed parsing Rhost execscript data")
-		print(e)
+		Rhost.print("Failed parsing Rhost execscript data")
+		Rhost.print(e)
 		return
 	}
-	print(environment)
-	print(Deno.args)
-	print("ハイ")
+	Rhost.print(environment)
+	Rhost.print(Deno.args)
+	Rhost.print("ハイ")
 }
 
 await main()
