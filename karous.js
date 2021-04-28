@@ -30,10 +30,10 @@ async function main() {
 	async function checkDatabase(name) {
 		const db = perch.db(name)
 		if(await db.exists()) {
-		console.log(`${name} exists!`)
+		print(`${name} exists!`)
 			return db
 		}
-		console.log(`${name} does not exist! Creating.`)
+		print(`${name} does not exist! Creating.`)
 		await db.create()
 		return db
 	}
@@ -41,16 +41,17 @@ async function main() {
 	const sheetsDb = await checkDatabase('karous-sheets')
 	const templatesDb = await checkDatabase('karous-templates')
 
-	var execscript
+	var environment
 	try {
-		execscript = Rhost.execscript()
+		environment = Rhost.environment()
 	} catch(e) {
-		console.log("Failed parsing Rhost execscript data")
-		console.log(e)
+		print("Failed parsing Rhost execscript data")
+		print(e)
 		return
 	}
-	console.log(execscript)
-	console.log(Deno.args)
+	print(environment)
+	print(Deno.args)
+	print("ハイ")
 }
 
 await main()

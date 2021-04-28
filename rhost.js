@@ -1,4 +1,4 @@
-export function execscript() {
+export function environment() {
 	var version = Deno.env.get('MUSH_VERSION')
 	var playerRef = Deno.env.get('MUSH_PLAYER')
 	var causeRef = Deno.env.get('MUSH_CAUSE')
@@ -73,4 +73,16 @@ export function execscript() {
 		registers: registers,
 		vars: vars
 	}
+}
+
+export function print(str) {
+	var rhostEncodedString = str.split("").map(function(c) {
+		var cp = c.codePointAt(0)
+		if(cp > 127) {
+			cp = cp.toString(0x10).padStart(4, '0')
+			return `%<u${cp}>`
+		}
+		return c
+	}).join('')
+	console.log(rhostEncodedString)
 }
