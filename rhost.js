@@ -57,9 +57,12 @@ export function execscript() {
 	})
 
 	var vars = {}
-	Deno.env.get("MUSHL_VARS").split(" ").forEach(function(key) {
-		vars[key] = Deno.env.get(`MUSHV_${key}`)
-	})
+	var mushlVars = Deno.env.get("MUSHL_VARS")
+	if(mushlVars) {
+		mushlVars.split(" ").forEach(function(key) {
+			vars[key] = Deno.env.get(`MUSHV_${key}`)
+		})
+	}
 
 	return {
 		version: version,

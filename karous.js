@@ -50,6 +50,7 @@ async function main() {
 		return
 	}
 	console.log(execscript)
+	console.log(Deno.args)
 }
 
 await main()
