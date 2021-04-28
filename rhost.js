@@ -11,7 +11,6 @@ export function execscript() {
 	var ownerFlags = Deno.env.get('MUSH_OWNERFLAGS').split(' ').filter(x => x != "")
 	var ownerToggles = Deno.env.get('MUSH_OWNERTOGGLES').split(' ').filter(x => x != "")
 	var ownerTotems = Deno.env.get('MUSH_OWNERTOTEMS').split(' ').filter(x => x != "")
-	var execscriptVars = Deno.env.get('MUSHL_VARS')
 
 	var player = {
 		dbref: playerRef.split(' ')[0],
@@ -44,18 +43,31 @@ export function execscript() {
 	}
 
 	var envObj = Deno.env.toObject()
-	var registers = {}
+	var registers = []
 	
-	Object.keys(envObj).filter(key => key.match(/^MUSHN_/)).forEach(function(key) {
-		var name = key.replace("MUSHN_", "")
-		registers[name] = envObj[key]
+	Object.keys(envObj).filter(key => key.match(/^MUSHQ_/)).forEach(function(key) {
+		var reg = key.replace("MUSHQ_", "")
+		var name = Deno.env.get(`MUSHQN_${reg}`)
+		var value = Deno.env.get(key)
+		registers.push({
+			register: reg,
+			name: name,
+			value: value
+		})
+	})
+
+	var vars = {}
+	Deno.env.get("MUSHL_VARS").split(" ").forEach(function(key) {
+		vars[key] = Deno.env.get(`MUSHV_${key}`)
 	})
 
 	return {
+		version: version,
 		player: player,
 		cause: cause,
 		caller: caller,
 		owner: owner,
-		registers: registers
+		registers: registers,
+		vars: vars
 	}
 }
