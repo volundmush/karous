@@ -1,5 +1,5 @@
 const PerchDB = await import("./perchdb.js")
-const Rhost = await import("./rhost.js")
+const Rhost = await import("https://raw.githubusercontent.com/stevensmedia/deno-rhost/master/rhost.js")
 
 const ansiYellow = "[1;38;5;184m"
 const ansiReset = "[0m"
